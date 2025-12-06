@@ -9,12 +9,12 @@ export default function PayfonaLanding() {
     topic: "",
     message: "",
   });
-  const [formErrors, setFormErrors] = useState({});
+  const [formErrors, setFormErrors] = useState<{ [key: string]: string }>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
   const validateForm = () => {
-    const errors = {};
+    const errors: Record<string, string> = {};
     if (!formData.name || formData.name.length < 2)
       errors.name = "Name is required";
     if (!formData.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
@@ -25,7 +25,7 @@ export default function PayfonaLanding() {
     return errors;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const errors = validateForm();
 
@@ -55,8 +55,18 @@ export default function PayfonaLanding() {
     }
   };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (formErrors[name]) {
+      setFormErrors((prev) => ({ ...prev, [name]: "" }));
+    }
+  };
+
+  const handleTextAreaChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement>,
+  ) => {
+    const { name, value } = event.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
     if (formErrors[name]) {
       setFormErrors((prev) => ({ ...prev, [name]: "" }));
@@ -852,7 +862,7 @@ export default function PayfonaLanding() {
           <h2>
             Everything You Need.
             <br />
-            <span className="gradient-text">Nothing You Don't.</span>
+            <span className="gradient-text">Nothing You Don`t.</span>
           </h2>
           <p>
             Three powerful tools. One seamless platform. Built for businesses
@@ -893,7 +903,7 @@ export default function PayfonaLanding() {
             <h3>Virtual POS</h3>
             <p>
               Accept payments anywhere. No hardware needed. Just your phone,
-              tablet, or laptop and you're ready to go.
+              tablet, or laptop and you&apos;re ready to go.
             </p>
             <div className="feature-tags">
               <span className="tag">Mobile ready</span>
@@ -1027,8 +1037,8 @@ export default function PayfonaLanding() {
       {/* Contact */}
       <section className="section" id="contact">
         <div className="section-header">
-          <h2>Let's Talk</h2>
-          <p>Have questions? We'd love to hear from you.</p>
+          <h2>Let`s Talk</h2>
+          <p>Have questions? We`d love to hear from you.</p>
         </div>
         <div className="contact-container">
           <div className="contact-form">
@@ -1037,7 +1047,7 @@ export default function PayfonaLanding() {
                 <div className="success-icon">✓</div>
                 <h3>Message Sent!</h3>
                 <p style={{ color: "var(--color-text-muted)" }}>
-                  We'll get back to you within 24 hours.
+                  We`ll get back to you within 24 hours.
                 </p>
               </div>
             ) : (
@@ -1096,7 +1106,7 @@ export default function PayfonaLanding() {
                     name="message"
                     placeholder="Tell us more..."
                     value={formData.message}
-                    onChange={handleChange}
+                    onChange={handleTextAreaChange}
                     className={formErrors.message ? "has-error" : ""}
                   />
                   {formErrors.message && (
