@@ -91,18 +91,20 @@ export default function PayfonaLanding() {
   return (
     <div className="payfona-landing">
       <style jsx>{`
-        @import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Work+Sans:wght@300;400;500;600;700;800&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Red+Hat+Mono:wght@300;400;500;600;700&display=swap");
 
         .payfona-landing {
-          --color-bg: #0a0e1a;
-          --color-surface: #151b2e;
-          --color-primary: #ff6b35;
-          --color-secondary: #f7931e;
-          --color-accent: #00d9ff;
-          --color-text: #ffffff;
-          --color-text-muted: #8b95b0;
-          --font-display: "Work Sans", sans-serif;
-          --font-mono: "Space Mono", monospace;
+          --color-bg: #ffffff;
+          --color-surface: #f8f9fa;
+          --color-primary: #31004a;
+          --color-secondary: #6e1aa0;
+          --color-tertiary: #aa53dc;
+          --color-accent: #aa53dc;
+          --color-text: #1c002b;
+          --color-text-muted: #6e1aa0;
+          --color-dark: #1c002b;
+          --font-display: "Red Hat Mono", monospace;
+          --font-mono: "Red Hat Mono", monospace;
 
           background: var(--color-bg);
           color: var(--color-text);
