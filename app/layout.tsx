@@ -25,18 +25,31 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <style jsx global>{`
-          @import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Work+Sans:wght@300;400;500;600;700;800&display=swap");
+          @import url("https://fonts.googleapis.com/css2?family=Red+Hat+Mono:wght@300;400;500;600;700&display=swap");
 
           :root {
-            --color-bg: #0a0e1a;
-            --color-surface: #151b2e;
-            --color-primary: #ff6b35;
-            --color-secondary: #f7931e;
-            --color-accent: #00d9ff;
-            --color-text: #ffffff;
-            --color-text-muted: #8b95b0;
-            --font-display: "Work Sans", sans-serif;
-            --font-mono: "Space Mono", monospace;
+            --color-bg: #ffffff;
+            --color-surface: #f8f9fa;
+            --color-primary: #31004a;
+            --color-secondary: #6e1aa0;
+            --color-tertiary: #aa53dc;
+            --color-accent: #aa53dc;
+            --color-text: #1c002b;
+            --color-text-muted: #6e1aa0;
+            --color-dark: #1c002b;
+            --font-display: "Red Hat Mono", monospace;
+            --font-mono: "Red Hat Mono", monospace;
+
+            /* Color shades */
+            --color-primary-100: #f3e6f7;
+            --color-primary-200: #d9b3e6;
+            --color-primary-300: #bf80d4;
+            --color-primary-400: #a54dc3;
+            --color-primary-500: #31004a;
+            --color-primary-600: #27003b;
+            --color-primary-700: #1d002c;
+            --color-primary-800: #13001d;
+            --color-primary-900: #09000e;
           }
 
           body {
@@ -52,9 +65,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(10, 14, 26, 0.8);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(49, 0, 74, 0.1);
+            box-shadow: 0 2px 8px rgba(49, 0, 74, 0.05);
           }
 
           .navbar-container {
@@ -136,13 +150,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
           .nav-btn-login {
             background: transparent;
-            color: var(--color-text);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
           }
 
           .nav-btn-login:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: var(--color-primary);
+            background: var(--color-primary-100);
+            border-color: var(--color-secondary);
             transform: translateY(-1px);
           }
 
@@ -154,7 +168,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             );
             color: white;
             border: none;
-            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+            box-shadow: 0 4px 15px rgba(49, 0, 74, 0.3);
             position: relative;
             overflow: hidden;
           }
@@ -181,7 +195,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
           .nav-btn-signup:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+            box-shadow: 0 6px 20px rgba(49, 0, 74, 0.4);
           }
 
           .mobile-menu-btn {
@@ -223,10 +237,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
           .mobile-menu {
             display: none;
-            background: var(--color-surface);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: white;
+            border-bottom: 1px solid rgba(49, 0, 74, 0.1);
             padding: 1.5rem;
             animation: slideDown 0.3s ease-out;
+            box-shadow: 0 4px 12px rgba(49, 0, 74, 0.08);
           }
 
           .mobile-menu.active {
@@ -261,8 +276,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           }
 
           .mobile-nav-link:hover {
-            color: var(--color-text);
-            background: rgba(255, 107, 53, 0.1);
+            color: var(--color-primary);
+            background: var(--color-primary-100);
           }
 
           .mobile-nav-actions {
@@ -270,7 +285,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             flex-direction: column;
             gap: 0.75rem;
             padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(49, 0, 74, 0.1);
           }
 
           .mobile-nav-btn {
@@ -280,8 +295,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
           /* Footer Styles */
           .footer {
-            background: var(--color-surface);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: var(--color-dark);
+            color: white;
+            border-top: 1px solid rgba(170, 83, 220, 0.2);
             margin-top: 4rem;
           }
 
@@ -299,7 +315,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             gap: 2rem;
             padding-bottom: 2rem;
             margin-bottom: 2rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(170, 83, 220, 0.2);
           }
 
           .footer-logo img {
@@ -314,14 +330,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           }
 
           .footer-link {
-            color: var(--color-text-muted);
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             font-size: 0.9rem;
             transition: color 0.3s ease;
           }
 
           .footer-link:hover {
-            color: var(--color-primary);
+            color: var(--color-tertiary);
           }
 
           .footer-bottom {
@@ -333,7 +349,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           }
 
           .footer-copyright {
-            color: var(--color-text-muted);
+            color: rgba(255, 255, 255, 0.7);
             font-size: 0.9rem;
           }
 
@@ -343,12 +359,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           }
 
           .footer-social a {
-            color: var(--color-text-muted);
+            color: rgba(255, 255, 255, 0.7);
             transition: all 0.3s ease;
           }
 
           .footer-social a:hover {
-            color: var(--color-primary);
+            color: var(--color-tertiary);
             transform: translateY(-2px);
           }
 

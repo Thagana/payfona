@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Mono:wght@300;400;500;600;700&display=swap');
+@import 'variables';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  background: var(--color-light);
+  color: var(--color-dark);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Utility classes
+.bg-primary { background-color: var(--color-primary) !important; }
+.bg-secondary { background-color: var(--color-secondary) !important; }
+.bg-tertiary { background-color: var(--color-tertiary) !important; }
+.bg-dark { background-color: var(--color-dark) !important; }
+.bg-light { background-color: var(--color-light) !important; }
+
+.text-primary { color: var(--color-primary) !important; }
+.text-secondary { color: var(--color-secondary) !important; }
+.text-tertiary { color: var(--color-tertiary) !important; }
+.text-dark { color: var(--color-dark) !important; }
+.text-light { color: var(--color-light) !important; }
+
+// Gradient backgrounds
+.bg-gradient-primary {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+}
+
+.bg-gradient-secondary {
+  background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-tertiary) 100%);
+}
+
+.bg-gradient-dark {
+  background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-primary) 100%);
+}
+
+// Button styles
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-family);
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: white;
+
+  &:hover:not(:disabled) {
+    background: var(--color-primary-600);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(49, 0, 74, 0.3);
+  }
+}
+
+.btn-secondary {
+  background: var(--color-secondary);
+  color: white;
+
+  &:hover:not(:disabled) {
+    background: var(--color-tertiary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(110, 26, 160, 0.3);
+  }
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+
+  &:hover:not(:disabled) {
+    background: var(--color-primary);
+    color: white;
+  }
+}
+
+// Card styles
+.card {
+  background: white;
+  border-radius: var(--border-radius-lg);
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
+  }
+}
+
+// Form styles
+input, textarea, select {
+  font-family: var(--font-family);
+  font-size: 1rem;
+  padding: 0.75rem;
+  border: 2px solid var(--color-primary-200);
+  border-radius: var(--border-radius);
+  width: 100%;
+  transition: all 0.3s ease;
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(49, 0, 74, 0.1);
+  }
+
+  &.has-error {
+    border-color: var(--color-danger);
+  }
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--color-dark);
+}
+
+.error {
+  color: var(--color-danger);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+// Container
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+// Responsive utilities
+@media (max-width: 768px) {
+  .btn {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+  }
+
+  .container {
+    padding: 0 0.75rem;
+  }
+}

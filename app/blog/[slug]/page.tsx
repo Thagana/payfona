@@ -46,13 +46,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
+    <div className="min-h-screen bg-white">
       {/* Back Button */}
-      <div className="border-b border-gray-700">
+      <div className="border-b border-purple-200 bg-gradient-to-br from-purple-50 to-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <Link
             href="/blog"
-            className="inline-flex items-center text-gray-300 hover:text-orange-400 transition-colors"
+            className="inline-flex items-center text-purple-700 hover:text-purple-900 transition-colors font-semibold"
           >
             <svg
               className="w-5 h-5 mr-2"
@@ -76,17 +76,17 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <header className="mb-12">
           <div className="flex items-center gap-3 mb-6">
-            <span className="inline-block px-3 py-1 text-xs font-semibold text-orange-400 bg-orange-500/10 rounded-full border border-orange-500/20">
+            <span className="inline-block px-3 py-1 text-xs font-semibold text-purple-700 bg-purple-100 rounded-full border border-purple-300">
               {post.category}
             </span>
-            <span className="text-gray-400 text-sm">{post.readTime}</span>
+            <span className="text-purple-600 text-sm">{post.readTime}</span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+          <h1 className="text-4xl md:text-5xl font-bold text-purple-900 mb-6 leading-tight">
             {post.title}
           </h1>
 
-          <div className="flex items-center text-gray-400 text-sm">
+          <div className="flex items-center text-purple-600 text-sm">
             <span>{post.author}</span>
             <span className="mx-3">•</span>
             <time dateTime={post.date}>
@@ -100,25 +100,25 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </header>
 
         {/* Article Content */}
-        <div className="prose prose-invert prose-lg max-w-none">
+        <div className="prose prose-lg max-w-none prose-headings:text-purple-900 prose-a:text-purple-600 prose-strong:text-purple-800">
           <SanitizedHTML
             html={post.content}
-            className="text-gray-300 leading-relaxed"
+            className="text-gray-800 leading-relaxed"
           />
         </div>
 
         {/* CTA Section */}
-        <div className="mt-16 p-8 bg-gradient-to-r from-orange-600 to-red-600 rounded-lg">
+        <div className="mt-16 p-8 bg-gradient-to-r from-purple-700 to-purple-900 rounded-lg shadow-xl">
           <h3 className="text-2xl font-bold text-white mb-4">
             Ready to try {post.feature}?
           </h3>
-          <p className="text-white/90 mb-6">
+          <p className="text-purple-100 mb-6">
             Start with Payfona`s free plan and upgrade when you`re ready. No
             credit card required.
           </p>
           <Link
             href="/signup"
-            className="inline-block bg-white text-orange-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+            className="inline-block bg-white text-purple-900 px-8 py-3 rounded-lg font-semibold hover:bg-purple-100 transition-colors shadow-lg"
           >
             Get Started Free
           </Link>
