@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { blogPosts } from "../../../lib/blog-post";
 import { Metadata } from "next";
+import SanitizedHTML from "../../../components/SanitizedHTML";
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -100,9 +101,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         {/* Article Content */}
         <div className="prose prose-invert prose-lg max-w-none">
-          <div
+          <SanitizedHTML
+            html={post.content}
             className="text-gray-300 leading-relaxed"
-            dangerouslySetInnerHTML={{ __html: post.content }}
           />
         </div>
 

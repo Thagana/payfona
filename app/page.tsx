@@ -12,6 +12,7 @@ export default function PayfonaLanding() {
   const [formErrors, setFormErrors] = useState<{ [key: string]: string }>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState<string>("");
 
   const validateForm = () => {
     const errors: Record<string, string> = {};
@@ -35,6 +36,9 @@ export default function PayfonaLanding() {
     }
 
     setIsSubmitting(true);
+    setSubmitError("");
+    setSubmitSuccess(false);
+
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
@@ -43,13 +47,24 @@ export default function PayfonaLanding() {
       });
 
       const payload = await response.json();
+
+      if (!response.ok) {
+        // Handle API errors (4xx, 5xx)
+        setSubmitError(payload.error || "Failed to send message. Please try again.");
+        return;
+      }
+
       if (payload.success) {
         setSubmitSuccess(true);
         setFormData({ name: "", email: "", topic: "", message: "" });
-        setTimeout(() => setSubmitSuccess(false), 3000);
+        setFormErrors({});
+        setTimeout(() => setSubmitSuccess(false), 5000);
+      } else {
+        setSubmitError(payload.error || "Something went wrong. Please try again.");
       }
     } catch (error) {
       console.error("Contact form error:", error);
+      setSubmitError("Network error. Please check your connection and try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -1113,6 +1128,19 @@ export default function PayfonaLanding() {
                     <span className="error">{formErrors.message}</span>
                   )}
                 </div>
+                {submitError && (
+                  <div className="error-message" style={{
+                    padding: "12px",
+                    marginBottom: "16px",
+                    backgroundColor: "rgba(239, 68, 68, 0.1)",
+                    border: "1px solid rgba(239, 68, 68, 0.3)",
+                    borderRadius: "8px",
+                    color: "#fca5a5",
+                    fontSize: "14px"
+                  }}>
+                    ⚠ {submitError}
+                  </div>
+                )}
                 <button
                   type="submit"
                   className="btn btn-primary"
